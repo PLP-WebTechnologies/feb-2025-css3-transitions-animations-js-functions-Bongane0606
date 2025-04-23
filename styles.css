@@ -1,0 +1,606 @@
+/* Gotham City Theme */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&display=swap');
+
+:root {
+    --bat-yellow: #ffe600;
+    --bat-black: #050505;
+    --bat-gray: #1a1a1a;
+    --bat-light: #e0e0e0;
+    --bat-red: #c00;
+    --bat-blue: #0066cc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bat-black);
+    color: var(--bat-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Oswald', sans-serif;
+}
+
+.gotham-city {
+    position: relative;
+    min-height: 100vh;
+    background: 
+        linear-gradient(to bottom, #000428, #004e92);
+    overflow: hidden;
+}
+
+/* Gotham City Buildings */
+.buildings {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 300px;
+    background: 
+        linear-gradient(to bottom, #111, #333);
+    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+.buildings:nth-child(1) {
+    left: 5%;
+    height: 200px;
+    clip-path: polygon(0 100%, 100% 100%, 90% 0, 10% 0);
+}
+
+.buildings:nth-child(2) {
+    left: 35%;
+    height: 350px;
+    clip-path: polygon(0 100%, 100% 100%, 80% 20%, 60% 0, 40% 0, 20% 20%);
+}
+
+.buildings:nth-child(3) {
+    right: 5%;
+    height: 250px;
+    clip-path: polygon(0 100%, 100% 100%, 80% 0, 20% 0);
+}
+
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    background: #f5f3ce;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #f5f3ce, 0 0 60px #f5f3ceaa;
+}
+
+header {
+    background-color: rgba(5, 5, 5, 0.8);
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid var(--bat-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+header h1 {
+    color: var(--bat-yellow);
+    text-shadow: 0 0 10px rgba(255, 230, 0, 0.7);
+    font-size: 3rem;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 3px;
+}
+
+.theme-toggle button {
+    background-color: var(--bat-gray);
+    color: var(--bat-yellow);
+    border: 2px solid var(--bat-yellow);
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.theme-toggle button:hover {
+    background-color: var(--bat-yellow);
+    color: var(--bat-black);
+    box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+.bat-signal-container {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.bat-signal {
+    width: 200px;
+    height: 200px;
+    background-color: var(--bat-black);
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    border: 3px solid var(--bat-gray);
+    z-index: 2;
+}
+
+.bat-signal-beam {
+    position: absolute;
+    width: 100px;
+    height: 500px;
+    background: linear-gradient(to top, rgba(0, 150, 255, 0), rgba(0, 150, 255, 0.8));
+    left: 50%;
+    transform: translateX(-50%) perspective(500px) rotateX(60deg);
+    transform-origin: bottom;
+    opacity: 0;
+    z-index: 1;
+    filter: blur(10px);
+}
+
+.bat-signal.active ~ .bat-signal-beam {
+    opacity: 1;
+    animation: beamPulse 2s infinite alternate;
+}
+
+.bat-signal::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 150, 255, 0) 40%, rgba(0, 150, 255, 0.8) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.bat-signal.active::before {
+    opacity: 1;
+    animation: signalPulse 1.5s infinite alternate;
+}
+
+@keyframes signalPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+@keyframes beamPulse {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bat-button {
+    background-color: var(--bat-gray);
+    color: var(--bat-yellow);
+    border: 2px solid var(--bat-yellow);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    margin: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.bat-button:hover {
+    background-color: var(--bat-yellow);
+    color: var(--bat-black);
+    box-shadow: 0 0 15px rgba(255, 230, 0, 0.7);
+    transform: translateY(-2px);
+}
+
+.bat-button:active {
+    transform: translateY(1px);
+}
+
+.bat-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+    transition: all 0.3s;
+}
+
+.bat-button:hover::after {
+    left: 100%;
+}
+
+.animation-controls {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.animation-controls h2 {
+    color: var(--bat-yellow);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-shadow: 0 0 10px rgba(255, 230, 0, 0.5);
+    letter-spacing: 2px;
+    font-family: 'Bangers', cursive;
+}
+
+.batman-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.batman {
+    position: absolute;
+    width: 180px;
+    height: 300px;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: center bottom;
+    transition: all 0.5s ease;
+    z-index: 4;
+}
+
+/* Batman Head */
+.batman-head {
+    position: absolute;
+    width: 100px;
+    height: 80px;
+    background-color: var(--bat-gray);
+    border-radius: 50% 50% 45% 45%;
+    top: 0;
+    left: 40px;
+    z-index: 3;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.bat-ears {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    top: -15px;
+}
+
+.bat-ears::before,
+.bat-ears::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: var(--bat-gray);
+    top: 0;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.bat-ears::before {
+    left: 10px;
+    transform: rotate(-20deg);
+}
+
+.bat-ears::after {
+    right: 10px;
+    transform: rotate(20deg);
+}
+
+.bat-eyes {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background-color: #111;
+    top: 30px;
+    left: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bat-eyes::before,
+.bat-eyes::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: var(--bat-yellow);
+    top: 2px;
+    border-radius: 50%;
+    animation: eyesGlow 2s infinite alternate;
+}
+
+.bat-eyes::before {
+    left: 5px;
+}
+
+.bat-eyes::after {
+    right: 5px;
+}
+
+@keyframes eyesGlow {
+    0% {
+        box-shadow: 0 0 5px var(--bat-yellow);
+    }
+    100% {
+        box-shadow: 0 0 20px var(--bat-yellow);
+    }
+}
+
+.bat-mask {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background-color: var(--bat-black);
+    top: 20px;
+    left: 10px;
+    border-radius: 0 0 40px 40px;
+}
+
+/* Batman Body */
+.batman-body {
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background-color: var(--bat-gray);
+    top: 70px;
+    left: 40px;
+    z-index: 2;
+    border-radius: 15px 15px 5px 5px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+}
+
+.bat-logo {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bat-yellow);
+    top: 20px;
+    left: 30px;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    transform: rotate(180deg);
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.7);
+}
+
+.bat-abs {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    top: 70px;
+    left: 10px;
+    background: 
+        linear-gradient(to bottom, 
+            transparent 0%, 
+            rgba(0,0,0,0.3) 30%, 
+            transparent 70%);
+    border-radius: 10px;
+}
+
+.bat-gauntlets {
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    background-color: var(--bat-black);
+    top: 140px;
+    left: -10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+/* Batman Cape */
+.batman-cape {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    background-color: var(--bat-black);
+    top: 70px;
+    left: 15px;
+    z-index: 1;
+    border-radius: 75px 75px 0 0;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+}
+
+.batman-shadow {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    bottom: 40px;
+    left: 40px;
+    filter: blur(5px);
+    z-index: 3;
+}
+
+/* Animation Classes */
+.flying {
+    animation: flyAnimation 3s ease-in-out infinite;
+}
+
+.flying .batman-cape {
+    animation: capeFlap 0.4s ease-in-out infinite alternate;
+}
+
+.combat {
+    animation: combatStance 2s ease-in-out infinite alternate;
+}
+
+.combat .batman-cape {
+    animation: capeFlapFast 0.2s ease-in-out infinite alternate;
+}
+
+@keyframes flyAnimation {
+    0%, 100% {
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -100px) rotate(5deg);
+    }
+    50% {
+        transform: translate(-50%, -200px) rotate(0deg);
+    }
+    75% {
+        transform: translate(-50%, -100px) rotate(-5deg);
+    }
+}
+
+@keyframes capeFlap {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(40deg);
+    }
+}
+
+@keyframes capeFlapFast {
+    0% {
+        transform: rotateX(0deg) translateY(0);
+    }
+    50% {
+        transform: rotateX(30deg) translateY(5px);
+    }
+    100% {
+        transform: rotateX(0deg) translateY(0);
+    }
+}
+
+@keyframes combatStance {
+    0% {
+        transform: translate(-50%, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -20px) rotate(0deg);
+    }
+}
+
+/* Batarang Throw Effect */
+.batarang {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background-color: var(--bat-gray);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+    z-index: 5;
+    animation: batarangThrow 1s linear forwards;
+}
+
+@keyframes batarangThrow {
+    0% {
+        left: 50%;
+        top: 50%;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        top: 0;
+        transform: rotate(720deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    background-color: rgba(5, 5, 5, 0.8);
+    padding: 1rem;
+    text-align: center;
+    border-top: 3px solid var(--bat-yellow);
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+footer p {
+    color: var(--bat-yellow);
+    font-family: 'Bangers', cursive;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
+
+/* Light mode styles */
+body.light-mode {
+    background-color: #f0f0f0;
+    color: #333;
+    background-image: none;
+}
+
+body.light-mode .gotham-city {
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+}
+
+body.light-mode header,
+body.light-mode footer {
+    background-color: rgba(221, 221, 221, 0.9);
+    border-color: #333;
+}
+
+body.light-mode header h1,
+body.light-mode footer p {
+    color: #333;
+    text-shadow: none;
+}
+
+body.light-mode .bat-button {
+    background-color: #ddd;
+    color: #333;
+    border-color: #333;
+}
+
+body.light-mode .bat-button:hover {
+    background-color: #333;
+    color: #ddd;
+}
+
+body.light-mode .buildings {
+    background: linear-gradient(to bottom, #555, #777);
+}
+
+body.light-mode .moon {
+    display: none;
+}
+
+body.light-mode .bat-eyes::before,
+body.light-mode .bat-eyes::after {
+    background-color: #0066cc;
+    animation: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .batman {
+        transform: translateX(-50%) scale(0.8);
+    }
+}
+  
+  
